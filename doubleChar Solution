@@ -1,0 +1,38 @@
+/*
+doubleChar 
+http://codingbat.com/prob/p165312
+
+Given a string, return a string where for every char in the original, there are two chars.
+
+doubleChar("The") → "TThhee"
+doubleChar("AAbb") → "AAAAbbbb"
+doubleChar("Hi-There") → "HHii--TThheerree"
+
+public String doubleChar(String str)
+ */
+
+func doubleChar(_ str: String) -> String {
+    var result = ""
+    
+    for character in str.characters {
+        result.append(character)
+        result.append(character)
+    }
+    return result
+}
+
+print(doubleChar("The"))
+print(doubleChar("AAbb"))
+print(doubleChar("Hi-There"))
+
+
+/* Java Solution
+public String doubleChar(String str) {
+  String result = "";
+  
+  for (int i=0; i<str.length(); i++) {
+      result += str.charAt(i);
+      result += str.charAt(i);
+  }
+  return result;
+}
