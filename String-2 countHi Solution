@@ -1,0 +1,53 @@
+/*
+countHi
+http://codingbat.com/prob/p147448
+
+Return the number of times that the string "hi" appears anywhere in the given string.
+countHi("abc hi ho") → 1
+countHi("ABChi hi") → 2
+countHi("hihi") → 2
+Java method: public int countHi(String str)
+ */
+
+func countHi(_ str: String) -> Int {
+    var count = 0
+    
+    if str.characters.count < 2 {
+        return count
+    }
+    for i in 2...str.characters.count {
+        if substring(str,i-2,i) == "hi" {
+            count += 1
+        }
+    }
+    return count
+}
+
+func substring(_ str: String, _ start: Int, _ end: Int = Int.max) -> String {
+ 
+    return str[str.index(str.startIndex, offsetBy: start) ..< str.index(str.startIndex, offsetBy: (end == Int.max ? str.characters.count : end))]
+}
+
+
+print(
+countHi("abc hi ho"),
+countHi("ABChi hi"),
+countHi("hihi")
+)
+
+
+/* Java Solution
+public int countHi(String str) {
+  int count = 0;
+  
+  if (str.length() < 2) {
+    return count;
+  }
+  for (int i = 2; i <= str.length(); i++) {
+    if (str.substring(i-2,i).equals("hi")) {
+      count++;
+    }
+  }
+  return count; 
+}
+*/
