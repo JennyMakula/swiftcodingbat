@@ -1,0 +1,29 @@
+//extraFront
+//http://codingbat.com/prob/p172063
+
+/*
+Given a string, return a new string made of 3 copies of the first 2 chars of the original string. The string may be any length. If there are fewer than 2 chars, use whatever is there.
+public String extraFront(String str)
+ */
+
+func extraFront(_ str: String) -> String {
+    var result = ""
+    
+    if (str.characters.count <= 1) {
+        result = str
+    } else {
+        result = substring(str, 0, 2)
+        //str[str.startIndex ..< str.index(str.startIndex, offsetBy: 2)]
+    }
+    return result + result + result
+}
+
+func substring(_ str: String, _ start: Int, _ end: Int = Int.max) -> String {
+ 
+    return str[str.index(str.startIndex, offsetBy: start) ..< str.index(str.startIndex, offsetBy: (end == Int.max ? str.characters.count : end))]
+}
+
+print(extraFront(""))
+print(extraFront("Z"))
+print(extraFront("Cat"))
+print(extraFront("Java"))
