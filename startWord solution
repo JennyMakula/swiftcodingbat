@@ -1,0 +1,62 @@
+/*
+startWord
+http://codingbat.com/prob/p141494
+
+Given a string and a second "word" string, we'll say that the word matches the string if it appears at the front of the string, except its first char does not need to match exactly. On a match, return the front of the string, or otherwise return the empty string. So, so with the string "hippo" the word "hi" returns "hi" and "xip" returns "hip". The word will be at least length 1.
+
+startWord("hippo", "hi") → "hi"
+startWord("hippo", "xip") → "hip"
+startWord("hippo", "i") → "h"
+
+public String startWord(String str, String word) 
+ */
+
+func startWord(_ str: String, _ word: String) -> String {
+    let matchWord = substring(word,1)
+    let matchLength = word.characters.count
+    
+    if str.characters.count == 0 || str.characters.count < matchLength {
+        return ""
+    }
+    if matchLength == 1{
+        return substring(str,0,1)
+    }
+    if matchWord == substring(str,1,matchLength)  {
+        return substring(str,0,matchLength)
+    } else {
+        return ""
+    }
+}
+
+func substring(_ str: String, _ start: Int, _ end: Int = Int.max) -> String {
+ 
+    return str[str.index(str.startIndex, offsetBy: start) ..< str.index(str.startIndex, offsetBy: (end == Int.max ? str.characters.count : end))]
+}
+
+print(startWord("hippo","hi"))
+print(startWord("hippo","xip"))
+print(startWord("hippo","i"))
+print(startWord("","i"))
+print(startWord("hi","hippo"))
+
+
+
+/* Java solution
+
+public String startWord(String str, String word) {
+  String matchWord = word.substring(1);
+  int matchLength = word.length();
+  
+  if (str.length() == 0 || str.length() < matchLength) {
+    return "";
+  }
+  if (matchLength == 1) {
+    return str.substring(0,1);
+  }
+  if (matchWord.equals(str.substring(1,matchLength))) {
+    return str.substring(0,matchLength);
+  } else {
+    return "";
+  }
+}
+*/
