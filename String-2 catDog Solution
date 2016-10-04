@@ -1,0 +1,60 @@
+/*
+catDog 
+http://codingbat.com/prob/p111624
+
+Return true if the string "cat" and "dog" appear the same number of times in the given string.
+catDog("catdog") → true
+catDog("catcat") → false
+catDog("1cat1cadodog") → true
+Java method: public boolean catDog(String str)
+ */
+
+func catDog(_ str: String) -> Bool {
+    var cat = 0
+    var dog = 0
+    
+    if str.characters.count < 3 {
+        return true
+    }
+    for i in 3...str.characters.count {
+        if substring(str,i-3,i) == "cat" {
+            cat += 1
+        }
+        if substring(str,i-3,i) == "dog" {
+            dog += 1
+        }
+    }
+    return cat == dog
+}
+
+func substring(_ str: String, _ start: Int, _ end: Int = Int.max) -> String {
+ 
+    return str[str.index(str.startIndex, offsetBy: start) ..< str.index(str.startIndex, offsetBy: (end == Int.max ? str.characters.count : end))]
+}
+
+
+print(
+catDog("catdog"),
+catDog("catcat"),
+catDog("1cat1cadodog")
+)
+
+/* Java solution
+public boolean catDog(String str) {
+  int cat = 0;
+  int dog = 0;
+  
+  if (str.length() < 3) {
+    return true;
+  }
+  for (int i = 3; i <= str.length(); i++) {
+    if (str.substring(i-3,i).equals("cat")) {
+      cat++;
+    }
+    if (str.substring(i-3,i).equals("dog")) {
+      dog++;
+    }
+  }
+  return dog == cat;
+}
+*/
