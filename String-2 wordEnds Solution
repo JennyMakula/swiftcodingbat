@@ -1,0 +1,64 @@
+/*
+wordEnds 
+http://codingbat.com/prob/p147538
+
+Given a string and a non-empty word string, return a string made of each char just before and just after every appearance of the word in the string. Ignore cases where there is no char before or after the word, and a char may be included twice if it is between two words.
+wordEnds("abcXY123XYijk", "XY") → "c13i"
+wordEnds("XY123XY", "XY") → "13"
+wordEnds("XY1XY", "XY") → "11"
+public String wordEnds(String str, String word)
+ */
+
+func wordEnds(_ str: String, _ word: String) -> String {
+    var result = ""
+    let length = word.characters.count
+    
+    if str.characters.count <= length || str.characters.count < 1 {
+        return result
+    }
+    for i in length...str.characters.count {
+        if substring(str,i-length,i) == word {
+            if (i-length != 0) {
+            result += substring(str,i-length-1,i-length)
+            }
+            if (i != str.characters.count) {
+            result += substring(str,i,i+1)
+            }
+        }
+    }
+    return result
+}
+
+func substring(_ str: String, _ start: Int, _ end: Int = Int.max) -> String {
+ 
+    return str[str.index(str.startIndex, offsetBy: start) ..< str.index(str.startIndex, offsetBy: (end == Int.max ? str.characters.count : end))]
+}
+
+
+print(
+wordEnds("abcXY123XYijk", "XY"),
+wordEnds("XY123XY", "XY"),
+wordEnds("XY1XY", "XY")
+)
+
+/* Java Solution
+public String wordEnds(String str, String word) {
+  String result = "";
+  int size = word.length();
+  
+  if (str.length() < size || str.length() < 1) {
+    return result;
+  }
+  for (int i = size; i <= str.length(); i++ ) {
+    if (str.substring(i-size,i).equals(word)) {
+      if (i - size != 0) {
+        result += str.substring(i-size-1,i-size);
+      }
+      if (i != str.length()) {
+        result += str.substring(i,i+1);
+      }
+    }
+  }
+  return result;
+}
+*/
