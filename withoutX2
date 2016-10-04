@@ -1,0 +1,57 @@
+//withoutX2
+//http://codingbat.com/prob/p151359
+
+/*
+Given a string, if one or both of the first 2 chars is 'x', return the string without those 'x' chars, and otherwise return the string unchanged. This is a little harder than it looks.
+public String withoutX2(String str) 
+ */
+
+func withoutX2(str: String) -> String {
+
+var result = "";
+let character = Array(str.characters)
+if(str.characters.count >= 1 && character[0] != "x") {
+    result += String(character[0])
+}
+if(str.characters.count >= 2 && character[1] != "x") {
+    result += String(character[1])
+}
+if(str.characters.count >= 3) {
+    result += str[str.index(str.startIndex, offsetBy: 2) ..< str.endIndex]
+}
+return result
+}
+
+// alternative to character[0]/ character[1]:
+// str[str.startIndex]
+// str[str.index(str.startIndex, offsetBy: 1)
+
+print(withoutX2(str: "xBenny"))
+print(withoutX2(str: "Bxenny"))
+print(withoutX2(str: "xBxenny"))
+
+
+
+
+/* Java solution
+
+public String withoutX2(String str) {
+  
+  String result = "";
+  
+  if (str.length() >= 1 && (str.charAt(0) != 'x')) {
+    result += str.substring(0,1);
+  } 
+  if (str.length() >= 2 && str.charAt(1) != 'x') {
+    result += str.substring(1,2);
+  } 
+  if (str.length() >= 3) {
+    result += str.substring(2);
+  }
+
+  return result;
+  
+}
+
+*/
+
