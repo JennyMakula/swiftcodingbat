@@ -5,8 +5,8 @@ Codingbat code practice was created by Nick Parlante, a computer science lecture
 
 http://codingbat.com/java
 
-The website, however, only supports Java and Python. To write solutions in Swift, use:
+The website, however, only supports Java and Python. To write solutions in Swift, use the IBM Swift Sandbox:
 
 https://swiftlang.ng.bluemix.net/#/repl
 
-Overtime, I will be adding solutions to problems in Swift3 and Java. 
+Overtime, I will be adding solutions to problems in Swift 3 and Java. 
