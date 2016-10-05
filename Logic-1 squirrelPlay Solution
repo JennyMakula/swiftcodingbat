@@ -24,6 +24,6 @@ squirrelPlay(95, true)
 
 /* Java Solution
 public boolean squirrelPlay(int temp, boolean isSummer) {
-    return temp >= 60 && temp <= (isSummer ? 100:90)
+    return temp >= 60 && temp <= (isSummer ? 100:90);
 }
 */
