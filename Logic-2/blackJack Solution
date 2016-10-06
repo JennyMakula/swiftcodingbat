@@ -23,7 +23,8 @@ func blackjack(_ a: Int, _ b: Int) -> Int {
     }
     return 21 - a <= 21 - b ? a:b
 }
-
+// Shorter alternative: 
+// return max(a > 21 ? 0:a, b > 21 ? 0:b)
 
 print(
 blackjack(19, 21),
@@ -44,5 +45,5 @@ public int blackjack(int a, int b) {
   }
   return 21 - a <= 21 - b ? a:b;
 }
-
+// Alternative return Math.max( a > 21 ? 0:a, b > 21 ? 0:b);
 */
